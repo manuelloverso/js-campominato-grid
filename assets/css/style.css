@@ -4,39 +4,83 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: sans-serif;
+  background-color: #fd7e14;
+}
+
 header {
+  background-color: white;
   display: flex;
   margin: auto;
   justify-content: space-between;
-  padding: 20px 0;
-  width: 70%;
+  padding: 20px 200px;
+
+  .choice {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .choice select {
+    font-size: 0.9rem;
+    cursor: pointer;
+    height: 40px;
+    width: 130px;
+    border-radius: 10px;
+    transition: font-size 0.2s ease-in-out;
+  }
+
+  select > option {
+    font-size: 1rem;
+  }
+
+  .choice select:hover {
+    font-size: 1.1rem;
+  }
+
+  .choice label {
+    font-size: 1.2rem;
+  }
 
   & button {
+    cursor: pointer;
+    width: 80px;
+    border-radius: 10px;
     padding: 10px;
     border: none;
-    background-color: blue;
+    background-color: #fd7e14;
     color: white;
   }
+
+  & button:hover {
+    background-color: #ffc078;
+  }
+}
+
+main {
+  padding: 50px 0;
 }
 
 #container {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  width: 80%;
+  max-width: 1000px;
 
   .square {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     aspect-ratio: 1;
     border: 1px solid black;
-    background-color: aquamarine;
+    background-color: #e9fac8;
   }
 
   .selected {
-    background-color: blue;
+    background-color: #ffc078;
   }
 
   .easy {
@@ -49,11 +93,5 @@ header {
 
   .hard {
     width: calc(100% / 7);
-  }
-}
-
-@media screen and (max-width: 600px) {
-  #container .square {
-    font-size: 1rem;
   }
 }

@@ -39,13 +39,15 @@ function selectedCell() {
 
 //Function to generate 100 cells
 function generateGrid() {
-  if (container.childNodes.length > 0) {
+  container.innerHTML = "";
+
+  /* if (container.childNodes.length > 0) {
     const singleCell = document.querySelectorAll(".square");
 
     for (let i = 0; i < singleCell.length; i++) {
       container.removeChild(singleCell[i]);
-    }
-  }
+    } 
+  }  */
   if (selection.value == "easy") {
     for (let i = 0; i < 100; i++) {
       container.insertAdjacentHTML("beforeend", cellMarkup);
