@@ -16,4 +16,8 @@
     border: 1px solid black;
     background-color: aquamarine;
   }
+
+  .selected {
+    background-color: blue;
+  }
 }

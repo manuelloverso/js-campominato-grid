@@ -17,3 +17,11 @@ for (let i = 0; i < cellsArray.length; i++) {
 
   element.innerHTML = i + 1;
 }
+
+// Add function on click
+for (let i = 0; i < cellsArray.length; i++) {
+  cellsArray[i].addEventListener("click", function () {
+    cellsArray[i].classList.add("selected");
+    console.log(cellsArray[i].innerHTML);
+  });
+}
