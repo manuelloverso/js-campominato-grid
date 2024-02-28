@@ -4,11 +4,17 @@ const playBtn = document.getElementById("play");
 console.log(playBtn);
 const container = document.getElementById("container");
 console.log(container);
+const selection = document.getElementById("difficulty");
+console.log(selection);
 
-// Generating cells
+// Generating cells based on difficulty
 playBtn.addEventListener("click", function () {
-  for (let i = 0; i < 100; i++) {
-    container.insertAdjacentHTML("beforeend", cellMarkup);
+  if (selection.value == "easy") {
+    generateEasy();
+  } else if (selection.value == "mid") {
+    generateMid();
+  } else {
+    generateHard();
   }
 
   //Giving each cell a number
@@ -20,8 +26,13 @@ playBtn.addEventListener("click", function () {
 
     element.innerHTML = i + 1;
   }
+  selectedCell();
+});
 
-  // Add function on click
+function selectedCell() {
+  const cellsArray = document.querySelectorAll(".square");
+
+  // Add class on click
   for (let i = 0; i < cellsArray.length; i++) {
     cellsArray[i].addEventListener("click", function () {
       cellsArray[i].classList.add("selected");
@@ -30,4 +41,34 @@ playBtn.addEventListener("click", function () {
       );
     });
   }
-});
+}
+
+//Function to generate 100 cells
+function generateEasy() {
+  for (let i = 0; i < 100; i++) {
+    container.insertAdjacentHTML("beforeend", cellMarkup);
+    const singleCell = document.querySelectorAll(".square");
+    console.log(singleCell);
+    singleCell[i].classList.add("easy");
+  }
+}
+
+//Function to generate 81 cells
+function generateMid() {
+  for (let i = 0; i < 81; i++) {
+    container.insertAdjacentHTML("beforeend", cellMarkup);
+    const singleCell = document.querySelectorAll(".square");
+    console.log(singleCell);
+    singleCell[i].classList.add("mid");
+  }
+}
+
+//Function to generate 49 cells
+function generateHard() {
+  for (let i = 0; i < 49; i++) {
+    container.insertAdjacentHTML("beforeend", cellMarkup);
+    const singleCell = document.querySelectorAll(".square");
+    console.log(singleCell);
+    singleCell[i].classList.add("hard");
+  }
+}
