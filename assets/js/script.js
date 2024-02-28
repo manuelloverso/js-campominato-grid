@@ -1,27 +1,33 @@
 //Variables Declaration
 const cellMarkup = `<div class="square"></div>`;
-
-// Generating 100 cells
+const playBtn = document.getElementById("play");
+console.log(playBtn);
 const container = document.getElementById("container");
-//console.log(container);
-for (let i = 0; i < 100; i++) {
-  container.insertAdjacentHTML("beforeend", cellMarkup);
-}
+console.log(container);
 
-//Giving each cell a number
-const cellsArray = document.querySelectorAll(".square");
-console.log(cellsArray);
+// Generating cells
+playBtn.addEventListener("click", function () {
+  for (let i = 0; i < 100; i++) {
+    container.insertAdjacentHTML("beforeend", cellMarkup);
+  }
 
-for (let i = 0; i < cellsArray.length; i++) {
-  const element = cellsArray[i];
+  //Giving each cell a number
+  const cellsArray = document.querySelectorAll(".square");
+  console.log(cellsArray);
 
-  element.innerHTML = i + 1;
-}
+  for (let i = 0; i < cellsArray.length; i++) {
+    const element = cellsArray[i];
 
-// Add function on click
-for (let i = 0; i < cellsArray.length; i++) {
-  cellsArray[i].addEventListener("click", function () {
-    cellsArray[i].classList.add("selected");
-    console.log(cellsArray[i].innerHTML);
-  });
-}
+    element.innerHTML = i + 1;
+  }
+
+  // Add function on click
+  for (let i = 0; i < cellsArray.length; i++) {
+    cellsArray[i].addEventListener("click", function () {
+      cellsArray[i].classList.add("selected");
+      console.log(
+        `Il numero della cella selezionata è : ${cellsArray[i].innerHTML}`
+      );
+    });
+  }
+});

@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+
+  & button {
+    padding: 10px;
+    border: none;
+    background-color: blue;
+    color: white;
+  }
+}
+
 #container {
   display: flex;
   flex-wrap: wrap;
@@ -11,6 +24,10 @@
   width: 80%;
 
   .square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
     width: calc(100% / 10);
     aspect-ratio: 1;
     border: 1px solid black;
@@ -19,5 +36,11 @@
 
   .selected {
     background-color: blue;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #container .square {
+    font-size: 1rem;
   }
 }
