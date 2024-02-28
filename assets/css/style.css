@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  margin: auto;
+  width: 80%;
+
+  .square {
+    width: calc(100% / 10);
+    border: 1px solid black;
+    background-color: aquamarine;
+  }
+}
