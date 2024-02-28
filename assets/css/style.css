@@ -6,8 +6,10 @@
 
 header {
   display: flex;
-  justify-content: center;
+  margin: auto;
+  justify-content: space-between;
   padding: 20px 0;
+  width: 70%;
 
   & button {
     padding: 10px;
