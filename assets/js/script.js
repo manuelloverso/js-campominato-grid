@@ -9,3 +9,11 @@ for (let i = 0; i < 100; i++) {
 }
 
 //Giving each cell a number
+const cellsArray = document.querySelectorAll(".square");
+console.log(cellsArray);
+
+for (let i = 0; i < cellsArray.length; i++) {
+  const element = cellsArray[i];
+
+  element.innerHTML = i + 1;
+}
