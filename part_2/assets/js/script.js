@@ -6,11 +6,12 @@ let container = document.getElementById("container");
 //console.log(container);
 const selection = document.getElementById("difficulty");
 //console.log(selection);
-let gameLost = false;
 
 // Generating cells based on difficulty
 playBtn.addEventListener("click", function () {
   generateGrid();
+
+  let gameLost = false;
 
   //Giving each cell a number
   const cellsArray = document.querySelectorAll(".square");
