@@ -17,7 +17,6 @@ playBtn.addEventListener("click", function () {
 
   for (let i = 0; i < cellsArray.length; i++) {
     const element = cellsArray[i];
-
     element.innerHTML = i + 1;
   }
   selectedCell();
