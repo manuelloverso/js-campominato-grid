@@ -14,7 +14,11 @@ const gameResult = document.getElementById("game-result");
 //console.log(gameResult);
 
 // Generating cells based on difficulty
-playBtn.addEventListener("click", function () {
+playBtn.addEventListener("click", startGame);
+
+function startGame() {
+  let gameOver = false;
+
   gameResult.innerHTML = "";
 
   counter.innerHTML = "";
@@ -23,8 +27,6 @@ playBtn.addEventListener("click", function () {
   let clickCounter = 0;
 
   generateGrid();
-
-  let gameLost = false;
 
   //Giving each cell a number
   const cellsArray = document.querySelectorAll(".square");
@@ -55,42 +57,46 @@ playBtn.addEventListener("click", function () {
   for (let i = 0; i < cellsArray.length; i++) {
     let cellNumber = Number(cellsArray[i].innerHTML);
     cellsArray[i].addEventListener("click", function () {
-      counter.innerHTML = "";
-      counter.innerHTML = "Remaining Cells : ";
+      console.log(gameOver);
 
-      //Check if the user clicked on a mashroom cell
-      if (mushroomsArray.includes(cellNumber)) {
-        gameLost = true;
-        // console.log(`Game lost ${gameLost}`);
-        gameResult.innerHTML = "You Lost 😓";
-        counter.innerText += remainingCells - clickCounter - 16;
+      if (gameOver == false) {
+        counter.innerHTML = "";
+        counter.innerHTML = "Remaining Cells : ";
 
-        for (let i = 0; i < dangerousCells.length; i++) {
-          dangerousCells[i].classList.add("mushroom-cell");
-          dangerousCells[i].innerHTML = "💣";
-        }
-      } else if (
-        !mushroomsArray.includes(cellNumber) &&
-        gameLost == false &&
-        !cellsArray[i].classList.contains("selected")
-      ) {
-        cellsArray[i].classList.add("selected");
-        //console.log(`Il numero della cella selezionata è : ${cellsArray[i].innerHTML}`)
-        clickCounter++;
-        //console.log(clickCounter);
-        counter.innerText += remainingCells - clickCounter - 16;
+        //Check if the user clicked on a mashroom cell
+        if (mushroomsArray.includes(cellNumber)) {
+          gameOver = true;
+          gameResult.innerHTML = "You Lost 😓";
+          counter.innerText += remainingCells - clickCounter - 16;
 
-        if (remainingCells - clickCounter - 16 == 0) {
-          gameResult.innerHTML = "You Won ! 🎊";
           for (let i = 0; i < dangerousCells.length; i++) {
             dangerousCells[i].classList.add("mushroom-cell");
             dangerousCells[i].innerHTML = "💣";
+          }
+        } else if (
+          !mushroomsArray.includes(cellNumber) &&
+          gameOver == false &&
+          !cellsArray[i].classList.contains("selected")
+        ) {
+          cellsArray[i].classList.add("selected");
+          //console.log(`Il numero della cella selezionata è : ${cellsArray[i].innerHTML}`)
+          clickCounter++;
+          //console.log(clickCounter);
+          counter.innerText += remainingCells - clickCounter - 16;
+
+          if (remainingCells - clickCounter - 16 == 0) {
+            gameOver = true;
+            gameResult.innerHTML = "You Won ! 🎊";
+            for (let i = 0; i < dangerousCells.length; i++) {
+              dangerousCells[i].classList.add("mushroom-cell");
+              dangerousCells[i].innerHTML = "💣";
+            }
           }
         }
       }
     });
   }
-});
+}
 
 //Function to generate cells
 function generateGrid() {
