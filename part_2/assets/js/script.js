@@ -15,6 +15,11 @@ const gameResult = document.getElementById("game-result");
 
 // Generating cells based on difficulty
 playBtn.addEventListener("click", function () {
+  gameResult.innerHTML = "";
+
+  counter.innerHTML = "";
+  counter.innerHTML = "Remaining Cells : ";
+
   let clickCounter = 0;
 
   generateGrid();
@@ -58,6 +63,8 @@ playBtn.addEventListener("click", function () {
         gameLost = true;
         // console.log(`Game lost ${gameLost}`);
         gameResult.innerHTML = "You Lost 😓";
+        counter.innerText += remainingCells - clickCounter - 16;
+
         for (let i = 0; i < dangerousCells.length; i++) {
           dangerousCells[i].classList.add("mushroom-cell");
           dangerousCells[i].innerHTML = "💣";
