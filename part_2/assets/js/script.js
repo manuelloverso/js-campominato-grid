@@ -21,9 +21,18 @@ playBtn.addEventListener("click", function () {
   console.log(mushroomsArray);
 
   for (let i = 0; i < cellsArray.length; i++) {
+    //Giving each cell inner text
     const element = cellsArray[i];
     element.innerHTML = i + 1;
+
+    //Selecting all the cells that corrispond to array numbers
+    let cellNumber = Number(cellsArray[i].innerHTML);
+    if (mushroomsArray.includes(cellNumber)) {
+      cellsArray[i].classList.add("dangerous");
+    }
   }
+  const dangerousCells = document.querySelectorAll(".dangerous");
+  console.log(dangerousCells);
 
   // Add class on click
   for (let i = 0; i < cellsArray.length; i++) {
@@ -31,8 +40,10 @@ playBtn.addEventListener("click", function () {
     cellsArray[i].addEventListener("click", function () {
       //Check if the user clicked on a mashroom cell
       if (mushroomsArray.includes(cellNumber)) {
-        cellsArray[i].classList.add("mushroom-cell");
-        cellsArray[i].innerHTML = "🍄";
+        for (let i = 0; i < dangerousCells.length; i++) {
+          dangerousCells[i].classList.add("mushroom-cell");
+          dangerousCells[i].innerHTML = "🍄";
+        }
       } else {
         cellsArray[i].classList.add("selected");
         console.log(
@@ -87,3 +98,5 @@ function generateMushroomsArray(array, cellNumb) {
   }
   return array;
 }
+
+function endGame() {}

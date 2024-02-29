@@ -83,6 +83,10 @@ main {
     background-color: #ffc078;
   }
 
+  .mushroom-cell {
+    background-color: red;
+  }
+
   .easy {
     width: calc(100% / 10);
   }
