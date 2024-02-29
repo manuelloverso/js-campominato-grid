@@ -6,9 +6,14 @@ let container = document.getElementById("container");
 //console.log(container);
 const selection = document.getElementById("difficulty");
 //console.log(selection);
+const result = document.getElementById("result");
+//console.log(result);
+const counter = document.getElementById("counter");
 
 // Generating cells based on difficulty
 playBtn.addEventListener("click", function () {
+  result.innerHTML = "";
+
   generateGrid();
 
   let gameLost = false;
@@ -44,6 +49,10 @@ playBtn.addEventListener("click", function () {
       if (mushroomsArray.includes(cellNumber)) {
         gameLost = true;
         console.log(`Game lost ${gameLost}`);
+        result.insertAdjacentHTML(
+          "beforeend",
+          `<div class="you-lost">You Lost 😓</div>`
+        );
         for (let i = 0; i < dangerousCells.length; i++) {
           dangerousCells[i].classList.add("mushroom-cell");
           dangerousCells[i].innerHTML = "🍄";
