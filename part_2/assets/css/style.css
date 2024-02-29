@@ -67,11 +67,19 @@ main {
 }
 
 #result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 700px;
   margin: auto;
   margin-bottom: 30px;
 
-  .you-lost {
+  & #counter {
+    color: white;
+    font-size: 1.4rem;
+  }
+
+  #game-result {
     color: white;
     text-align: center;
     font-size: 4rem;
