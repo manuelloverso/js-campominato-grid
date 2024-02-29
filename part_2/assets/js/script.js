@@ -69,7 +69,11 @@ playBtn.addEventListener("click", function () {
           dangerousCells[i].classList.add("mushroom-cell");
           dangerousCells[i].innerHTML = "💣";
         }
-      } else if (!mushroomsArray.includes(cellNumber) && gameLost == false) {
+      } else if (
+        !mushroomsArray.includes(cellNumber) &&
+        gameLost == false &&
+        !cellsArray[i].classList.contains("selected")
+      ) {
         cellsArray[i].classList.add("selected");
         //console.log(`Il numero della cella selezionata è : ${cellsArray[i].innerHTML}`)
         clickCounter++;
