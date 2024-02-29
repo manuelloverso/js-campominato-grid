@@ -6,6 +6,7 @@ let container = document.getElementById("container");
 //console.log(container);
 const selection = document.getElementById("difficulty");
 //console.log(selection);
+let gameLost = false;
 
 // Generating cells based on difficulty
 playBtn.addEventListener("click", function () {
@@ -40,11 +41,13 @@ playBtn.addEventListener("click", function () {
     cellsArray[i].addEventListener("click", function () {
       //Check if the user clicked on a mashroom cell
       if (mushroomsArray.includes(cellNumber)) {
+        gameLost = true;
+        console.log(`Game lost ${gameLost}`);
         for (let i = 0; i < dangerousCells.length; i++) {
           dangerousCells[i].classList.add("mushroom-cell");
           dangerousCells[i].innerHTML = "🍄";
         }
-      } else {
+      } else if (!mushroomsArray.includes(cellNumber) && gameLost == false) {
         cellsArray[i].classList.add("selected");
         console.log(
           `Il numero della cella selezionata è : ${cellsArray[i].innerHTML}`
