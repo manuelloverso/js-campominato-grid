@@ -9,43 +9,42 @@ const selection = document.getElementById("difficulty");
 
 // Generating cells based on difficulty
 playBtn.addEventListener("click", function () {
-  //Generate the array with 16 random numbers
-  const mushroomsArray = [];
-
-  while (mushroomsArray.length < 16) {
-    let randomNumb = Math.floor(Math.random() * 16) + 1;
-    if (!mushroomsArray.includes(randomNumb)) {
-      mushroomsArray.push(randomNumb);
-    }
-  }
-  console.log(mushroomsArray);
-
   generateGrid();
 
   //Giving each cell a number
   const cellsArray = document.querySelectorAll(".square");
   //console.log(cellsArray);
 
+  //Generate the array with 16 random numbers
+  const mushroomsArray = [];
+  generateMushroomsArray(mushroomsArray, cellsArray.length);
+  console.log(mushroomsArray);
+
   for (let i = 0; i < cellsArray.length; i++) {
     const element = cellsArray[i];
     element.innerHTML = i + 1;
   }
-  selectedCell();
-});
-
-function selectedCell() {
-  const cellsArray = document.querySelectorAll(".square");
 
   // Add class on click
   for (let i = 0; i < cellsArray.length; i++) {
+    let cellNumber = Number(cellsArray[i].innerHTML);
     cellsArray[i].addEventListener("click", function () {
-      cellsArray[i].classList.add("selected");
-      console.log(
-        `Il numero della cella selezionata è : ${cellsArray[i].innerHTML}`
-      );
+      //Check if the user clicked on a mashroom cell
+      if (mushroomsArray.includes(cellNumber)) {
+        cellsArray[i].classList.add("mushroom-cell");
+        cellsArray[i].innerHTML = "🍄";
+      } else {
+        cellsArray[i].classList.add("selected");
+        console.log(
+          `Il numero della cella selezionata è : ${cellsArray[i].innerHTML}`
+        );
+        clickCounter++;
+      }
     });
   }
-}
+});
+
+let clickCounter = 0;
 
 //Function to generate cells
 function generateGrid() {
@@ -76,4 +75,15 @@ function generateGrid() {
       singleCell[i].classList.add("hard");
     }
   }
+}
+
+// Generate an array with 16 random different numbers
+function generateMushroomsArray(array, cellNumb) {
+  while (array.length < 16) {
+    let randomNumb = Math.floor(Math.random() * cellNumb) + 1;
+    if (!array.includes(randomNumb)) {
+      array.push(randomNumb);
+    }
+  }
+  return array;
 }
