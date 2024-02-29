@@ -9,6 +9,17 @@ const selection = document.getElementById("difficulty");
 
 // Generating cells based on difficulty
 playBtn.addEventListener("click", function () {
+  //Generate the array with 16 random numbers
+  const mushroomsArray = [];
+
+  while (mushroomsArray.length < 16) {
+    let randomNumb = Math.floor(Math.random() * 16) + 1;
+    if (!mushroomsArray.includes(randomNumb)) {
+      mushroomsArray.push(randomNumb);
+    }
+  }
+  console.log(mushroomsArray);
+
   generateGrid();
 
   //Giving each cell a number
@@ -40,13 +51,6 @@ function selectedCell() {
 function generateGrid() {
   container.innerHTML = "";
 
-  /* if (container.childNodes.length > 0) {
-    const singleCell = document.querySelectorAll(".square");
-
-    for (let i = 0; i < singleCell.length; i++) {
-      container.removeChild(singleCell[i]);
-    } 
-  }  */
   if (selection.value == "easy") {
     for (let i = 0; i < 100; i++) {
       container.insertAdjacentHTML("beforeend", cellMarkup);
